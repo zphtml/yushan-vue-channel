@@ -1,10 +1,11 @@
 /**
  * Created by Administrator on 2018/8/6/006.
  */
-export function getInfo(token) {
+import { fetch } from '@/utils/fetch';
+export function getInfo(data) {
     return fetch({
-        url: '/user/info',
+        url: '/login/login',
         method: 'get',
-        params: { token }
+        params: data
     });
 }
