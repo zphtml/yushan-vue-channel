@@ -1,5 +1,6 @@
 <template>
     <el-row class="requestapply" style="background:white;">
+
         <el-tabs type="" style="min-width: 900px;" v-model="activeName" @tab-click="handleClick">
             <el-tab-pane  label="上线推广页面" class="tab_top" name="first">
                 <el-row :gutter="20">
@@ -242,33 +243,6 @@
                          layout="total, sizes, prev, pager, next, jumper" style="text-align: center;margin-top: 10px;"
                         :total="totalnum1">
                     </el-pagination>
-                    <!-- 新增需求 -->
-                    <!-- <el-dialog title="解析二级域名" :visible.sync="jiexiBol" width="40%" modal="true" lock-scroll="true" close-on-click-modal="true" close-on-press-escape="true">
-                        <div  class="lis">
-                            <strong><span>客户：</span></strong>
-                            {{jiexiInfo.advertiser||'空'}}
-                        </div>    
-                        <div class="lis">
-                            <strong><span>帐户:</span></strong>
-                            {{jiexiInfo.a_users||'空'}}
-                        </div>
-                        <div  class="lis">
-                            <strong><span>解析说明:</span></strong>
-                            {{jiexiInfo.note||'空'}}
-                        </div>
-                        <div  class="lis">
-                            <strong><span>主域：</span></strong>
-                            {{jiexiInfo.url||'空'}}
-                        </div>
-                        <div  class="lis">
-                            <strong><span>二级域名：</span></strong>
-                            <el-input style="width: 55%;" v-model="coment1" placeholder="写上解析好的二级域名"></el-input>
-                        </div>
-                        <span slot="footer" class="dialog-footer">
-                            <el-button size="mini"@click="jiexiBol = false">取 消</el-button>
-                            <el-button size="mini"type="primary" @click="jiexiEvent">确 定</el-button>
-                        </span>
-                    </el-dialog> -->
                 </div>
             </el-tab-pane>
         </el-tabs>
@@ -428,15 +402,15 @@ export default {
                    display: inline-block;
                    width:200px;
                }
-               
+
                .el-select__caret{
                    line-height: 28px!important;
                }
-               
 
-               
+
+
            }
-           
+
        }
        .phone{
            position: relative;

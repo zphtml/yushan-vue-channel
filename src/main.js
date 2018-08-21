@@ -3,8 +3,10 @@ import App from './App.vue'
 import router from './router'
 import NProgress from 'nprogress';
 import ElementUI from 'element-ui';
+import moment from 'moment';
 import 'element-ui/lib/theme-chalk/index.css';
 import permission from './store/permission';
+
 import store from './store';
 Vue.use(ElementUI);
 Vue.config.productionTip = false;
@@ -46,5 +48,6 @@ if (store.getters.token) { // 判断是否有token
 new Vue({
   router,
   store,
+    moment,
   render: h => h(App)
 }).$mount('#app')

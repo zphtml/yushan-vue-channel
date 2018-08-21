@@ -64,7 +64,7 @@
             login(){
                 this.getLogin(this.loginData).then(response => {
                     if(response == 'true'){
-                        this.$router.push({ name: 'demo1' });
+                        this.$router.push({ name: '/acount' });
 
                     }else{
                         this.$notify.error({

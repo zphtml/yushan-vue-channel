@@ -12,7 +12,7 @@ export function place_advertiser_list(data) {
 //账户管理
 export function place_to_advertise(data) {
     return fetch({
-        url: '/place_to_advertise',
+        url: '/place_to_advertiser',
         method: 'post',
         data:  data,
     });
