@@ -29,7 +29,6 @@
     import { mapGetters,mapActions } from 'vuex';
     import {  getInfo } from '@/api/login';
     export default {
-
         data() {
             return {
                 name:'',

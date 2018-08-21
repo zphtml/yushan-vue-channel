@@ -109,6 +109,15 @@
                         this.$message.error(err);
                     });
                 },
+// 账户管理表格
+                place_to_advertise(){
+                    av_id:'',
+                    place_to_advertise({
+                    }).then(response => {
+                    }).catch(err => {
+                        this.$message.error(err);
+                    });
+                },
             }
         },
         computed: {

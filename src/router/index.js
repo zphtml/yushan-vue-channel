@@ -7,7 +7,10 @@ import Layout from '../views/layout/Sidebar';
 
 /* login*/
 import Login from '../views/login/';
-import demo from '../views/acount/acount';
+import acount from '../views/acount/acount';
+import requestApply from '../views/requestApply/requestApply';
+
+
 import demo1_1 from '../views/demo/demo1_1';
 import demo1 from '../views/demo/demo1';
 import demo2 from '../views/demo/demo2';
@@ -37,7 +40,7 @@ export const constantRouterMap = [
             {
                 path: 'list',
                 meta: {title: '首页'},
-                component: demo,
+                component: acount,
                 name: '/acount',
             },
             {
@@ -61,12 +64,12 @@ export const constantRouterMap = [
     {
         path: '/demo2',
         component: Layout,
-        redirect: '/demo2/index',
-        meta: {title: '提交需求3'},
-        name: '提交需求3',
+        redirect: '/demo2/requestApply',
+        meta: {title: '需求申请'},
+        name: 'requestApply',
         noDropdown: true,
         children: [
-            {path: 'index', component: demo2, name: 'demo3'},
+            {path: 'requestApply', component: requestApply, name: 'requestApply'},
         ]
     },
     {
