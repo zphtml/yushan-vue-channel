@@ -29,6 +29,7 @@ export const constantRouterMap = [
         component: Layout,
         redirect: '/demo/index',
         name: '提交需求1',
+        meta: {role:[roleType.customer_list]},
         noDropdown: true,
         children: [
             {path: 'index', component: demo,    name: 'demo1'},
@@ -51,7 +52,7 @@ export const constantRouterMap = [
         name: '提交需求3',
         noDropdown: true,
         children: [
-            {path: 'index', component: demo2, meta: {role:[roleType.customer_list]},name: 'demo3'},
+            {path: 'index', component: demo2, name: 'demo3'},
         ]
     },
     {

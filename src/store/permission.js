@@ -69,10 +69,10 @@ const permission = {
         }
     },
     getHeaderMenu() {
+        console.log(this.state.headerMenu)
         return this.state.headerMenu;
     },
     hasPermission(roles, route) {
-
         if (route.meta && route.meta.role) {
 
             return roles.some(role => route.meta.role.indexOf(role) >= 0)

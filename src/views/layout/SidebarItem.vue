@@ -64,7 +64,7 @@
         },
     },
     mounted(){
-        this.permissionRoutes = this.permission_routers;
+        this.permissionRoutes =  permissionRoutes.getHeaderMenu();
         this.activeIndex =  this.activeNav='/'+this.$route.path.split('/')[1];
     },
   }
