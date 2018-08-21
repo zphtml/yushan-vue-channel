@@ -49,7 +49,7 @@ module.exports = {
         port: 8085,
         https: false,
         hotOnly: false,
-        proxy: 'http://www.yushanapp.com/', // 设置代理
+        proxy: 'http://c.lzad.cc/', // 设置代理
         before: app => {}
     }
 }

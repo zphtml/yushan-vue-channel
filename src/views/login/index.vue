@@ -2,9 +2,27 @@
 <template>
     <el-row style="height: 100%;width: 100%; position: absolute;" class="loginBox">
        <el-col :span="24" style="text-align: center;padding: 100px">
-           <el-input v-model="name" placeholder="请输入内容"></el-input>
-           <el-input v-model="password" placeholder="请输入内容"></el-input>
-           <el-button @click="login">登录</el-button>
+           <div class="loginBox">
+               <!--<p class="crmTitle">经纬—广告人自己的CRM系统</p>-->
+               <el-form :model="loginData" :rules="rules2" ref="loginData" label-position="left" label-width="0px" class="demo-ruleForm login-container">
+                   <div class="loginTitle">
+                       <span>用户名</span>
+                   </div>
+                   <el-form-item prop="account" style=" margin-bottom: 15px;">
+                       <el-input type="text" class="textInput" v-model="loginData.username" auto-complete="off" placeholder="账号" @change="acountInput"></el-input>
+                   </el-form-item>
+                   <div class="loginTitle">
+                       <span>密码</span>
+                   </div>
+                   <el-form-item prop="checkPass" style=" margin-bottom:5px;">
+                       <el-input type="password" class="textInput" v-model="loginData.password" auto-complete="off" placeholder="密码"></el-input>
+                   </el-form-item>
+
+                   <el-form-item style="width:100%;">
+                       <el-button type="primary" style="width:100%;" class="loginPull" @click.native.prevent="login" >立刻登录</el-button>
+                   </el-form-item>
+               </el-form>
+           </div>
        </el-col>
     </el-row>
 </template>
@@ -18,31 +36,20 @@
             return {
                 name:'',
                 password:'',
-                getInfo(){
-                    getInfo({
-                        username:'蒋玉',
-                        password:'06ebfbbbb4cd14de011d6bd1ef5f220d',
-                        key:'1534239183202',
-                    })
-                        .then(response => {
-
-                            this.GetInfo({ username: user,password: code,key:random}).then(response => {
-
-                            }).catch(err => {
-                                this.$notify.error({
-                                    title: '错误',
-                                    message: '无该账户'
-                                });
-//                    this.$message.error(err.message);
-//                  _self.loading = false;
-                            });
-
-
-                            console.log(response.data)
-                        })
-                        .catch(err => {
-                            this.$message.error(err);
-                        });
+                loginData: {
+                    username:'',
+                    password: '',
+                    checked:true,
+                },
+                rules2: {
+                    username: [
+                        { required: true, message: '请输入账号', trigger: 'blur' },
+                        //{ validator: validaePass }
+                    ],
+                    password: [
+                        { required: true, message: '请输入密码', trigger: 'blur' },
+                        //{ validator: validaePass2 }
+                    ]
                 },
             }
         },
@@ -50,10 +57,30 @@
         },
         methods: {
             ...mapActions([
-                'GetInfo'
+                    'getLogin',
             ]),
+            acountInput(){
+                if(this.loginData.username == ""){
+                    this.ruleForm2.password = '';
+                }
+            },
             login(){
-                this.getInfo();
+                this.getLogin(this.loginData).then(response => {
+                    if(response == 'true'){
+                        this.$router.push({ name: 'demo1' });
+
+                    }else{
+                        this.$notify.error({
+                            title: '错误',
+                            message: '账户或密码错误'
+                        });
+                    }
+                });
+
+
+//                this.getInfo();
+//
+//                this.$router.push({ name: 'demo1' })
             },
         },
         destroyed() {

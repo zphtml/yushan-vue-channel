@@ -4,8 +4,8 @@
 import { fetch } from '@/utils/fetch';
 export function getInfo(data) {
     return fetch({
-        url: '/login/login',
-        method: 'get',
-        params: data
+        url: '/login',
+        method: 'post',
+        data:  data
     });
 }
