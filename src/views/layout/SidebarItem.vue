@@ -2,12 +2,33 @@
     <el-row class="header">
         <el-col :span="24">
             <el-col :span="18" class="left_header">
-                <el-menu :default-active="activeIndex" mode="horizontal" >
-                    <el-menu-item :index="item.path" v-for="item in permissionRoutes" v-if="!item.hidden">
-                        <router-link :to="item.path">
-                            {{item.name}}
-                        </router-link>
-                    </el-menu-item>
+                <el-menu :default-active="activeIndex" mode="horizontal"    @open="handleOpen">
+
+                    <template v-for="item in permissionRoutes" v-if="!item.hidden">
+                        <el-menu-item :index="item.path"  v-if="item.children.length<=1">
+                            <router-link :to="item.path" class="router_class">
+                                {{item.meta.title}}
+                            </router-link>
+                        </el-menu-item>
+
+                        <el-submenu :index="item.path"   v-if="item.children.length>1">
+                            <template slot="title" >
+                                {{item.meta.title}}
+                            </template>
+                            <router-link
+                                    class="header_tan"
+                                    v-for="child1 in item.children"
+                                    :key="child1.path"
+                                    v-if="!child1.hidden"
+                                         :to="{name:child1.name}">
+                                <el-menu-item :index="child1.name">
+                                    {{item.meta.title}}
+                                </el-menu-item>
+
+                            </router-link>
+                        </el-submenu>
+                    </template>
+
                 </el-menu>
             </el-col>
             <el-col :span="6" class="right_header">
@@ -32,7 +53,6 @@
                 </el-dropdown>
             </el-col>
         </el-col>
-
     </el-row>
 </template>
 
@@ -47,6 +67,7 @@
       return {
           activeIndex: '',
           permissionRoutes:[],
+          header_router:[],
       }
     },
       computed: {
@@ -62,8 +83,13 @@
         go_login(){
             this.$router.push({ name: 'Login' })
         },
+        handleOpen(){
+            console.log(10)
+        }
     },
     mounted(){
+//console.log( permissionRoutes.get(this.$route))
+        console.log(  permissionRoutes.getHeaderMenu())
         this.permissionRoutes =  permissionRoutes.getHeaderMenu();
         this.activeIndex =  this.activeNav='/'+this.$route.path.split('/')[1];
     },
@@ -75,16 +101,38 @@
         width:100%;
         height:50px;
         border: 1px solid red;
-        .el-menu {
-            li {
-                height:50px;
-                line-height: 50px;
+        background: white;
+        z-index: 99;
+        .left_header {
+            height:50px;
+            ul{
+                li {
+                    padding: 0 15px;
+                    height:50px;
+                    line-height: 50px;
+                    .router_class {
+                        display: block;
+                        width:100%;
+                        height:100%;
+                    }
+                    .el-submenu__title {
+                        height:50px;
+                        line-height: 50px;
+                    }
+                }
             }
+
         }
         .right_header {
             height: 50px;
             line-height: 50px;
             text-align: right;
         }
+    }
+    .header_tan {
+        display: block;
+        height:40px;
+        line-height: 40px;
+        text-align: center;
     }
 </style>

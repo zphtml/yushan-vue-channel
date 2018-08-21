@@ -24,8 +24,12 @@
     .box_qd {
         width:100%;
         height:100%;
-        padding: 0 20px;
+        position: absolute;
+        left:0;
+        bottom: 0;
+        padding: 50px 20px 20px 20px;
         border:1px solid red;
         box-sizing: border-box;
+        overflow-x: hidden;
     }
 </style>

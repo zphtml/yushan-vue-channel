@@ -12,6 +12,7 @@
     }
 </script>
 <style rel="stylesheet/scss" lang="scss">
+  @import "@/styles/rest.scss";
   html,body{
     height:100%;
     margin:0;

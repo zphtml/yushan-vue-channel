@@ -1,0 +1,17 @@
+.acount_box {
+  .acount_title {
+    height:40px;
+    line-height: 40px;
+    font-size: 14px;
+  }
+  .search {
+    height:40px;
+    line-height: 40px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    .name {
+      margin-left: 20px;
+      margin-right: 10px;
+    }
+  }
+}

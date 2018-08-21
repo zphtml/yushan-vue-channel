@@ -18,8 +18,7 @@ const permission = {
         const roles = data.roles;
         const router = data.router;
         const headerMenu = router.filter(v => {
-                if (this.hasPermission(roles, v)) {
-
+            if (this.hasPermission(roles, v)) {
             if (v.children && v.children.length > 0) {
                 v.children = v.children.filter(child => {
                         if (this.hasPermission(roles, child)) {
@@ -63,13 +62,14 @@ const permission = {
     },
 
     get(route) {
+
         if(route.path){
+
             let index = route.path.indexOf('/',1);
             return this.state.sidebarMenus[route.path.substring(0,index)];
         }
     },
     getHeaderMenu() {
-        console.log(this.state.headerMenu)
         return this.state.headerMenu;
     },
     hasPermission(roles, route) {

@@ -3,7 +3,6 @@
     <el-row style="height: 100%;width: 100%; position: absolute;" class="loginBox">
        <el-col :span="24" style="text-align: center;padding: 100px">
            <div class="loginBox">
-               <!--<p class="crmTitle">经纬—广告人自己的CRM系统</p>-->
                <el-form :model="loginData" :rules="rules2" ref="loginData" label-position="left" label-width="0px" class="demo-ruleForm login-container">
                    <div class="loginTitle">
                        <span>用户名</span>
@@ -17,7 +16,6 @@
                    <el-form-item prop="checkPass" style=" margin-bottom:5px;">
                        <el-input type="password" class="textInput" v-model="loginData.password" auto-complete="off" placeholder="密码"></el-input>
                    </el-form-item>
-
                    <el-form-item style="width:100%;">
                        <el-button type="primary" style="width:100%;" class="loginPull" @click.native.prevent="login" >立刻登录</el-button>
                    </el-form-item>

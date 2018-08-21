@@ -3,10 +3,12 @@ import store from '../store';
 import Router from 'vue-router';
 import {roleType} from '@/utils/constant'; //权限部分
 
+import Layout from '../views/layout/Sidebar';
+
 /* login*/
 import Login from '../views/login/';
-import Layout from '../views/layout/Sidebar';
-import demo from '../views/demo/demo';
+import demo from '../views/acount/acount';
+import demo1_1 from '../views/demo/demo1_1';
 import demo1 from '../views/demo/demo1';
 import demo2 from '../views/demo/demo2';
 import demo3 from '../views/demo/demo3';
@@ -25,20 +27,31 @@ export const constantRouterMap = [
     {path: '/',component: Login,hidden: true,name: 'Login'},
     { path: '*', redirect: '/404', hidden: true },
     {
-        path: '/demo',
+        path: '/acount',
         component: Layout,
-        redirect: '/demo/index',
-        name: '提交需求1',
-        meta: {role:[roleType.customer_list]},
+        redirect: '/acount/list',
+        name: 'acount',
+        meta: {title: '账户管理'},
         noDropdown: true,
         children: [
-            {path: 'index', component: demo,    name: 'demo1'},
+            {
+                path: 'list',
+                meta: {title: '首页'},
+                component: demo,
+                name: '/acount',
+            },
+            {
+                path: 'demo01',
+                component: demo1_1,
+                name: 'demo01',
+            },
         ]
     },
     {
         path: '/demo1',
         component: Layout,
         redirect: '/demo1/index',
+        meta: {title: '提交需求2',role:[roleType.customer_list]},
         name: '提交需求2',
         noDropdown: true,
         children: [
@@ -49,6 +62,7 @@ export const constantRouterMap = [
         path: '/demo2',
         component: Layout,
         redirect: '/demo2/index',
+        meta: {title: '提交需求3'},
         name: '提交需求3',
         noDropdown: true,
         children: [
@@ -60,6 +74,7 @@ export const constantRouterMap = [
         component: Layout,
         redirect: '/demo3/index',
         name: '提交需求4',
+        meta: {title: '提交需求4'},
         noDropdown: true,
         children: [
             {path: 'index', component: demo3, name: 'demo4'},
